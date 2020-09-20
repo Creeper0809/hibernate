@@ -1,6 +1,8 @@
 package creeper0809.data;
 
+import java.awt.Composite;
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -29,5 +31,18 @@ public class infectInfoid implements Serializable{
 	}
 	public infectInfoid() {
 		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public boolean equals(Object o) {
+		if(this == o) return true;
+		if(o == null || getClass() != o.getClass())return false;
+		infectInfoid i = (infectInfoid) o;
+		if(infectdate != i.infectdate) return false;
+		if(area.getCityNum() != i.getArea().getCityNum()) return false;
+		return infectnum.getId() == i.getInfectnum().getId();
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(infectdate,infectnum,area);
 	}
 }
